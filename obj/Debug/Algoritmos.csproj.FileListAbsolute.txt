@@ -1,0 +1,10 @@
+C:\Users\dvdfr\source\repos\Algoritmos\obj\Debug\Algoritmos.csprojAssemblyReference.cache
+C:\Users\dvdfr\source\repos\Algoritmos\obj\Debug\Algoritmos.Form1.resources
+C:\Users\dvdfr\source\repos\Algoritmos\obj\Debug\Algoritmos.Properties.Resources.resources
+C:\Users\dvdfr\source\repos\Algoritmos\obj\Debug\Algoritmos.csproj.GenerateResource.cache
+C:\Users\dvdfr\source\repos\Algoritmos\obj\Debug\Algoritmos.csproj.CoreCompileInputs.cache
+C:\Users\dvdfr\source\repos\Algoritmos\bin\Debug\Algoritmos.exe.config
+C:\Users\dvdfr\source\repos\Algoritmos\bin\Debug\Algoritmos.exe
+C:\Users\dvdfr\source\repos\Algoritmos\bin\Debug\Algoritmos.pdb
+C:\Users\dvdfr\source\repos\Algoritmos\obj\Debug\Algoritmos.exe
+C:\Users\dvdfr\source\repos\Algoritmos\obj\Debug\Algoritmos.pdb
