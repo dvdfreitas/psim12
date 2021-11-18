@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +18,7 @@ namespace Algoritmos
         static int ALTURA = 100;
 
         Button[] tabuleiro = new Button[TOTAL];
+        Button ex1Button = new Button();
         Button resultadoEx1 = new Button();
 
         public Form1()
@@ -39,6 +41,7 @@ namespace Algoritmos
                 tabuleiro[posX].Height = ALTURA;
                 tabuleiro[posX].Width = LARGURA;
                 tabuleiro[posX].Font = new Font("Arial", 20);
+                tabuleiro[posX].BackColor = Color.White;
 
                 Controls.Add(tabuleiro[posX]);
             }
@@ -46,7 +49,7 @@ namespace Algoritmos
 
         public void criarEx1()
         {
-            Button ex1Button = new Button();
+            ex1Button = new Button();
             ex1Button.Text = "Exercício 1";
             ex1Button.Click += new EventHandler(Ex1Button_Click);
             ex1Button.Width = 100;
@@ -74,7 +77,35 @@ namespace Algoritmos
         }
         private void Ex1Button_Click(object sender, EventArgs e)
         {
+
+            ex1Button.Enabled = false;
             resultadoEx1.Text = tabuleiro[0].Text;
+            tabuleiro[0].BackColor = Color.Blue;
+            Thread.Sleep(500);
+            Application.DoEvents();
+            tabuleiro[0].BackColor = Color.White;
+
+            int menor = Int32.Parse(tabuleiro[0].Text);
+
+            for (int i=1; i < TOTAL; i++)
+            {
+                tabuleiro[i].BackColor = Color.Blue;
+                int posTestar = Int32.Parse(tabuleiro[i].Text);
+                if (posTestar < menor)
+                {
+                    tabuleiro[i].BackColor = Color.Green;
+                    resultadoEx1.Text = posTestar + "";
+                    menor = posTestar;
+                }
+                Thread.Sleep(500);
+                Application.DoEvents();
+                tabuleiro[i].BackColor = Color.White;
+            }
+            ex1Button.Enabled = true;
+
         }
     }
 }
+
+//Thread.Sleep(200);
+//Application.DoEvents();
