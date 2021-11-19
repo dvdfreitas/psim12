@@ -19,6 +19,7 @@ namespace Algoritmos
 
         Button[] tabuleiro = new Button[TOTAL];
         Button ex1Button = new Button();
+        Button ex2Button = new Button();
         Button resultadoEx1 = new Button();
 
         public Form1()
@@ -30,6 +31,8 @@ namespace Algoritmos
         {
             criarBotoes();
             criarEx1();
+            criarEx2();
+
         }
 
         public void criarBotoes()
@@ -57,7 +60,7 @@ namespace Algoritmos
             ex1Button.Location = new Point(0, 0);
             Controls.Add(ex1Button);
 
-            
+
             resultadoEx1.Width = 100;
             resultadoEx1.Height = 100;
             resultadoEx1.BackColor = Color.White;
@@ -75,6 +78,32 @@ namespace Algoritmos
                 tabuleiro[i].Text = "" + nAleatorio;
             }
         }
+
+        public void criarEx2()
+        {
+            ex2Button = new Button();
+            ex2Button.Text = "Exercício 2";
+            ex2Button.Click += new EventHandler(Ex2Button_Click);
+            ex2Button.Width = 100;
+            ex2Button.Height = 100;
+            ex2Button.Location = new Point(100, 0);
+            Controls.Add(ex2Button);
+
+            resultadoEx1.Width = 100;
+            resultadoEx1.Height = 100;
+            resultadoEx1.BackColor = Color.White;
+            resultadoEx1.Location = new Point(0, 100);
+            resultadoEx1.Font = new Font("Arial", 20);
+
+            Random fabricaAleatorios = new Random();
+
+            for (int i = 0; i < TOTAL; i++)
+            {
+                int nAleatorio = fabricaAleatorios.Next(100);
+                tabuleiro[i].Text = "" + nAleatorio;
+            }
+        }
+
         private void Ex1Button_Click(object sender, EventArgs e)
         {
 
@@ -87,7 +116,7 @@ namespace Algoritmos
 
             int menor = Int32.Parse(tabuleiro[0].Text);
 
-            for (int i=1; i < TOTAL; i++)
+            for (int i = 1; i < TOTAL; i++)
             {
                 tabuleiro[i].BackColor = Color.Blue;
                 int posTestar = Int32.Parse(tabuleiro[i].Text);
@@ -103,6 +132,43 @@ namespace Algoritmos
             }
             ex1Button.Enabled = true;
 
+        }
+
+        private void Ex2Button_Click(object sender, EventArgs e)
+        {
+            for (int i=0; i<tabuleiro.Length-1; i++)
+            {
+                for (int j=i+1; j<tabuleiro.Length; j++)
+                {
+                    tabuleiro[i].BackColor = Color.Crimson;
+                    tabuleiro[j].BackColor = Color.ForestGreen;
+
+                    int inteiroPosI = Int32.Parse(tabuleiro[i].Text);
+                    int inteiroPosJ = Int32.Parse(tabuleiro[j].Text);
+
+                    if (inteiroPosJ < inteiroPosI)
+                    {
+                        String temp = tabuleiro[i].Text;
+                        
+                        tabuleiro[i].Font = new Font("Arial", 40);
+                        tabuleiro[j].Font = new Font("Arial", 40);
+                        
+                        Thread.Sleep(500);
+                        Application.DoEvents();
+                        tabuleiro[i].Text = tabuleiro[j].Text;
+                        tabuleiro[j].Text = temp;
+                        Thread.Sleep(500);
+                        Application.DoEvents();
+                        tabuleiro[i].Font = new Font("Arial", 20);
+                        tabuleiro[j].Font = new Font("Arial", 20);
+                    }
+
+                    Thread.Sleep(200);
+                    Application.DoEvents();
+                    tabuleiro[j].BackColor = Color.White;
+                }
+                tabuleiro[i].BackColor = Color.White;
+            }
         }
     }
 }
