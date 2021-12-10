@@ -29,9 +29,10 @@ namespace Algoritmos
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            criarBotoes();
-            criarEx1();
-            criarEx2();
+            MessageBox.Show(fibonacci(99) + "");
+            //criarBotoes();
+            //criarEx1();
+            //criarEx2();
 
         }
 
@@ -102,6 +103,20 @@ namespace Algoritmos
                 int nAleatorio = fabricaAleatorios.Next(100);
                 tabuleiro[i].Text = "" + nAleatorio;
             }
+        }
+
+        public int fibonacci(int fib)
+        {
+            //int resultado;
+
+            //if (fib == 1 || fib == 2)
+            //    resultado = 1;
+            //else
+            //    resultado = fibonacci(fib - 1) + fibonacci(fib - 2);
+
+            //return resultado;
+
+            return (fib == 1 || fib == 2) ? 1 : fibonacci(fib - 1) + fibonacci(fib - 2);
         }
 
         private void Ex1Button_Click(object sender, EventArgs e)
